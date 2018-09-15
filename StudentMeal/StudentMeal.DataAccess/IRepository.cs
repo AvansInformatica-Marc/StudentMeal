@@ -4,7 +4,7 @@ using System.Collections.Generic;
 using System.Text;
 
 namespace StudentMeal.DataAccess {
-    interface IRepository {
+    public interface IRepository {
         void AddStudent(Student student);
 
         void AddMeal(Meal meal);

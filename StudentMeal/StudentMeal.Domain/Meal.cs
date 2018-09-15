@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 
 namespace StudentMeal.Domain {
@@ -24,5 +25,14 @@ namespace StudentMeal.Domain {
 
         [DataType(DataType.Currency)]
         public float Price { get; set; }
+
+        [Required]
+        public List<Student> Guests { get; set; } = new List<Student>();
+
+        public int GuestCount {
+            get {
+                return Guests.Count;
+            }
+        }
     }
 }

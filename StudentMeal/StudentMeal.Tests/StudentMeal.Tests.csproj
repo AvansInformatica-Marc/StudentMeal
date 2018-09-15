@@ -17,8 +17,6 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\StudentMeal.DataAccess\StudentMeal.DataAccess.csproj" />
-    <ProjectReference Include="..\StudentMeal.Domain\StudentMeal.Domain.csproj" />
     <ProjectReference Include="..\StudentMeal.Presentation\StudentMeal.Presentation.csproj" />
   </ItemGroup>
 
