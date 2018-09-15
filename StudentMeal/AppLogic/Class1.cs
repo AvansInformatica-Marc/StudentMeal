@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace StudentMeal.DataAccess
+namespace AppLogic
 {
     public class Class1
     {

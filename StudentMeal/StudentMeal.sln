@@ -3,13 +3,15 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 15
 VisualStudioVersion = 15.0.28010.2003
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "StudentMeal.Presentation", "StudentMeal.Presentation\StudentMeal.Presentation.csproj", "{1161AE0E-24E3-402A-B296-6DD6D73FF3D5}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "StudentMeal.Presentation", "StudentMeal.Presentation\StudentMeal.Presentation.csproj", "{1161AE0E-24E3-402A-B296-6DD6D73FF3D5}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "StudentMeal.Tests", "StudentMeal.Tests\StudentMeal.Tests.csproj", "{3F0B01E7-7742-474C-81E0-8CDAD2D5D679}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "StudentMeal.Tests", "StudentMeal.Tests\StudentMeal.Tests.csproj", "{3F0B01E7-7742-474C-81E0-8CDAD2D5D679}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "StudentMeal.DataAccess", "StudentMeal.DataAccess\StudentMeal.DataAccess.csproj", "{CD118BF6-E98C-4882-89B7-1FF7A766C3D5}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "StudentMeal.DataAccess", "StudentMeal.DataAccess\StudentMeal.DataAccess.csproj", "{CD118BF6-E98C-4882-89B7-1FF7A766C3D5}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "StudentMeal.Domain", "StudentMeal.Domain\StudentMeal.Domain.csproj", "{B8D3CC70-1D24-45B0-9F41-99A27D12E409}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "StudentMeal.Domain", "StudentMeal.Domain\StudentMeal.Domain.csproj", "{B8D3CC70-1D24-45B0-9F41-99A27D12E409}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "StudentMeal.AppLogic", "StudentMeal.AppLogic\StudentMeal.AppLogic.csproj", "{25D18FBF-86FA-4D55-BDA8-6D6FC661CDD4}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -33,6 +35,10 @@ Global
 		{B8D3CC70-1D24-45B0-9F41-99A27D12E409}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{B8D3CC70-1D24-45B0-9F41-99A27D12E409}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{B8D3CC70-1D24-45B0-9F41-99A27D12E409}.Release|Any CPU.Build.0 = Release|Any CPU
+		{25D18FBF-86FA-4D55-BDA8-6D6FC661CDD4}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{25D18FBF-86FA-4D55-BDA8-6D6FC661CDD4}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{25D18FBF-86FA-4D55-BDA8-6D6FC661CDD4}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{25D18FBF-86FA-4D55-BDA8-6D6FC661CDD4}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

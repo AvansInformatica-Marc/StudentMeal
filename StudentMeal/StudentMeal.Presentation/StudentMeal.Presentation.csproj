@@ -15,6 +15,7 @@
   </ItemGroup>
 
   <ItemGroup>
+    <ProjectReference Include="..\StudentMeal.AppLogic\StudentMeal.AppLogic.csproj" />
     <ProjectReference Include="..\StudentMeal.DataAccess\StudentMeal.DataAccess.csproj" />
     <ProjectReference Include="..\StudentMeal.Domain\StudentMeal.Domain.csproj" />
   </ItemGroup>
