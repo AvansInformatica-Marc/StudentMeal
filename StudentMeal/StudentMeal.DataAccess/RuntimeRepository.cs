@@ -4,7 +4,7 @@ using System.Collections.Generic;
 using System.Text;
 
 namespace StudentMeal.DataAccess {
-    public class FakeDataRepository : IRepository {
+    class RuntimeRepository : IRepository {
         private static readonly List<Student> _students = new List<Student>();
 
         private static readonly List<Meal> _meals = new List<Meal>();
@@ -24,5 +24,7 @@ namespace StudentMeal.DataAccess {
         public IReadOnlyList<Meal> GetMeals() {
             return _meals.AsReadOnly();
         }
+
+        public void Dispose() {}
     }
 }
