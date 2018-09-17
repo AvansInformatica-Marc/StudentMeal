@@ -32,5 +32,17 @@ namespace StudentMeal.AppLogic {
 
             return canEnterMeal;
         }
+
+        public void AddNewStudent(Student student) {
+            _dataRepository.AddStudent(student);
+        }
+
+        public void AddNewMeal(Meal meal) {
+            _dataRepository.AddMeal(meal);
+        }
+
+        public IReadOnlyList<Student> GetAllStudents() {
+            return _dataRepository.GetStudents();
+        }
     }
 }

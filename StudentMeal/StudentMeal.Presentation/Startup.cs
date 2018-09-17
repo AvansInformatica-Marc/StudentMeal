@@ -34,6 +34,7 @@ namespace StudentMeal {
 
             app.UseHttpsRedirection();
             app.UseStaticFiles();
+            app.UseStatusCodePages();
             //app.UseCookiePolicy();
 
             app.UseMvc(routes => {
