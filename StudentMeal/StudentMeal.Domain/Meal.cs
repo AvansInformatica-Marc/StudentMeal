@@ -6,20 +6,17 @@ namespace StudentMeal.Domain {
     public class Meal {
         public int Id { get; set; }
 
-        [Required]
-        [DataType(DataType.DateTime)]
+        [Required, DataType(DataType.DateTime)]
         public DateTime DateTime { get; set; }
 
-        [Required]
-        [StringLength(64)]
+        [Required, StringLength(64)]
         public string Name { get; set; }
 
-        [Required]
-        [DataType(DataType.MultilineText)]
+        [Required, DataType(DataType.MultilineText)]
         public string Description { get; set; }
 
         [Required]
-        public Student Cook { get; set; }
+        public virtual Student Cook { get; set; }
 
         public byte MaxGuests { get; set; }
 
@@ -27,7 +24,7 @@ namespace StudentMeal.Domain {
         public float Price { get; set; }
 
         [Required]
-        public List<Student> Guests { get; set; } = new List<Student>();
+        public virtual ICollection<Student> Guests { get; set; } = new HashSet<Student>();
 
         public int GuestCount {
             get {

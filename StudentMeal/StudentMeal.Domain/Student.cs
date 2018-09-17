@@ -5,26 +5,19 @@ namespace StudentMeal.Domain {
     public class Student {
         public int Id { get; set; }
 
-        [Required]
-        [StringLength(64)]
-        [MinLength(2)]
+        [Required, StringLength(64), MinLength(2)]
         public string Name { get; set; }
 
-        [Required]
-        [StringLength(64)]
-        [EmailAddress]
+        [Required, StringLength(64), EmailAddress]
         public string Email { get; set; }
         
-        [Required]
-        [StringLength(16)]
-        [Phone]
-        [DataType(DataType.PhoneNumber)]
+        [Required, StringLength(16), Phone, DataType(DataType.PhoneNumber)]
         public string PhoneNumber { get; set; }
 
         [Required]
-        public List<Meal> MealsAsCook { get; set; } = new List<Meal>();
+        public virtual ICollection<Meal> MealsAsCook { get; set; } = new HashSet<Meal>();
 
         [Required]
-        public List<Meal> MealsAsGuest { get; set; } = new List<Meal>();
+        public virtual ICollection<Meal> MealsAsGuest { get; set; } = new HashSet<Meal>();
     }
 }
