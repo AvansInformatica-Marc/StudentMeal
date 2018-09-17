@@ -27,6 +27,7 @@ namespace StudentMeal {
         public void Configure(IApplicationBuilder app, IHostingEnvironment env) {
             if (env.IsDevelopment()) {
                 app.UseDeveloperExceptionPage();
+                app.UseDatabaseErrorPage();
             } else {
                 //app.UseExceptionHandler("/Home/Error");
                 app.UseHsts();
