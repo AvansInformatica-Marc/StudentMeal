@@ -9,13 +9,14 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Folder Include="wwwroot\css\" />
     <Folder Include="wwwroot\images\" />
     <Folder Include="wwwroot\lib\" />
   </ItemGroup>
 
   <ItemGroup>
     <ProjectReference Include="..\StudentMeal.AppLogic\StudentMeal.AppLogic.csproj" />
+    <ProjectReference Include="..\StudentMeal.DataAccess\StudentMeal.DataAccess.csproj" />
+    <ProjectReference Include="..\StudentMeal.Domain\StudentMeal.Domain.csproj" />
   </ItemGroup>
 
 </Project>
