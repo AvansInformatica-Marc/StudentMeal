@@ -2,6 +2,7 @@
 using StudentMeal.Domain;
 using System;
 using System.Collections.Generic;
+using System.Linq;
 using System.Text;
 
 namespace StudentMeal.AppLogic {
@@ -33,16 +34,12 @@ namespace StudentMeal.AppLogic {
             return canEnterMeal;
         }
 
-        public void AddNewStudent(Student student) {
-            _dataRepository.AddStudent(student);
-        }
+        public void AddNewStudent(Student student) => _dataRepository.AddStudent(student);
 
-        public void AddNewMeal(Meal meal) {
-            _dataRepository.AddMeal(meal);
-        }
+        public void AddNewMeal(Meal meal) => _dataRepository.AddMeal(meal);
 
-        public IReadOnlyList<Student> GetAllStudents() {
-            return _dataRepository.GetStudents();
-        }
+        public IEnumerable<Meal> GetMealsForPeriod(DateTime start, DateTime end) => _dataRepository.AllMeals.Where(meal => meal.DateTime.IsBetween(start, end));
+
+        public IEnumerable<Meal> GetMealsForDate(DateTime date) => GetMealsForPeriod(date, date);
     }
 }

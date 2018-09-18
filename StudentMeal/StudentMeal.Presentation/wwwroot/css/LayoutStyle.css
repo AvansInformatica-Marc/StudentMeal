@@ -1,26 +1,8 @@
-﻿.mdl-layout__header--transparent {
-    background: url('https://www.tokyo.grand.hyatt.co.jp/en/restaurants/wp-content/uploads/2017/10/TOD_Christmas_Dinner_1400.jpg') center / cover;
-}
-
-.mdl-layout .mdl-layout__header,
-.mdl-layout .mdl-layout__drawer-button {
-    /* This background is dark, so we set text to white. Use 87% black instead if
-        your background is light. */
-    color: white;
-}
-
-.mdl-layout .mdl-layout__header--waterfall {
-    -webkit-transition: max-height .8s;
-    -moz-transition: max-height .8s;
-    -ms-transition: max-height .8s;
-    transition: max-height .8s;
-}
-
-.mdl-layout .mdl-layout__header-row .mdl-navigation__link:last-of-type {
+﻿.mdl-layout .mdl-layout__header-row .mdl-navigation__link:last-of-type {
     padding-right: 0;
 }
 
-mdl-layout__header {
+.mdl-layout__header {
     display: flex !important;
 }
 
@@ -29,11 +11,7 @@ mdl-layout__header {
 }
 
 .page-content {
-    padding: 8px;
-}
-
-.mdl-layout__header-expanded {
-    margin-top: 56px;
+    padding: 8px 32px;
 }
 
 .mdl-card {

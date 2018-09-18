@@ -10,9 +10,9 @@ namespace StudentMeal.DataAccess {
             }
         }
 
-        public static IRepository RuntimeRepository {
+        public static IRepository FakeDataRepository {
             get {
-                return new RuntimeRepository();
+                return new FakeDataRepository();
             }
         }
     }

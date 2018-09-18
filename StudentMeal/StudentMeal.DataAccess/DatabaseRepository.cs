@@ -17,20 +17,20 @@ namespace StudentMeal.DataAccess {
 
         DbSet<Meal> Meals { get; set; }
 
-        public void AddMeal(Meal meal) {
-            Meals.Add(meal);
+        public void AddMeal(Meal meal) => Meals.Add(meal);
+
+        public void AddStudent(Student student) => Students.Add(student);
+
+        public IEnumerable<Student> AllStudents {
+            get {
+                return Students.ToList().AsReadOnly();
+            }
         }
 
-        public void AddStudent(Student student) {
-            Students.Add(student);
-        }
-
-        public IReadOnlyList<Meal> GetMeals() {
-            return Meals.ToList().AsReadOnly();
-        }
-
-        public IReadOnlyList<Student> GetStudents() {
-            return Students.ToList().AsReadOnly();
+        public IEnumerable<Meal> AllMeals {
+            get {
+                return Meals.ToList().AsReadOnly();
+            }
         }
 
         public override void Dispose() {

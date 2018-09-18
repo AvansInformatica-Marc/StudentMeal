@@ -7,21 +7,19 @@ using Microsoft.AspNetCore.Mvc;
 using StudentMeal.AppLogic;
 using StudentMeal.DataAccess;
 using StudentMeal.Domain;
-using StudentMeal.Models;
+using StudentMeal.Presentation.Models;
 
 namespace StudentMeal.Controllers {
     public class HomeController : Controller {
-        private static readonly Random random = new Random();
+        //private static readonly Random random = new Random();
 
-        private readonly StudentMealManager _studentMealManager = new StudentMealManager(RepositoryFactory.RuntimeRepository);
+        private readonly StudentMealManager _studentMealManager = new StudentMealManager(RepositoryFactory.FakeDataRepository);
 
         public IActionResult Index() {
-            _studentMealManager.AddNewStudent(new Student {
-                Name = "Demo" + random.Next(1000),
-                Email = "foo.bar@example.com",
-                PhoneNumber = "+31 (6) 12345678"
+            return View(new IndexViewModel {
+                Today = _studentMealManager.GetMealsForDate(DateTime.Today),
+                Upcoming = _studentMealManager.GetMealsForPeriod(DateTime.Today.AddDays(1), DateTime.Today.AddDays(2 * 7))
             });
-            return View(_studentMealManager.GetAllStudents());
         }
     }
 }

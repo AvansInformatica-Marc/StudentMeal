@@ -9,8 +9,8 @@ namespace StudentMeal.DataAccess {
 
         void AddMeal(Meal meal);
 
-        IReadOnlyList<Student> GetStudents();
+        IEnumerable<Student> AllStudents { get; }
 
-        IReadOnlyList<Meal> GetMeals();
+        IEnumerable<Meal> AllMeals { get; }
     }
 }

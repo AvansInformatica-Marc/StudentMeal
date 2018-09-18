@@ -1,17 +1,31 @@
-﻿@model IReadOnlyList<StudentMeal.Domain.Student>
+﻿@model StudentMeal.Presentation.Models.IndexViewModel
 
 @{
-    ViewData["Title"] = "Home Page";
+    ViewData["Title"] = "Start";
 }
 
-@foreach (var student in Model) {
-    <div class="mdl-card mdl-shadow--4dp">
-        <div class="mdl-card__title">
-            @student.Name
-        </div>
-        <div class="mdl-card__supporting-text">
-            <p>@student.Email</p>
-            <p>@student.PhoneNumber</p>
-        </div>
-    </div>
+<h4>Vandaag</h4>
+@if (Model.Upcoming.Count() == 0) {
+    <p>Geen maaltijd voor vandaag</p>
+} else {
+    @foreach (var meal in Model.Today) {
+        <partial name="_MealCard" model="meal" />
+    }
 }
+<br>
+
+<h4>Komende weken</h4>
+@if (Model.Upcoming.Count() == 0) {
+    <p>Geen maaltijd de komende weken</p>
+} else {
+    @foreach (var meal in Model.Upcoming) {
+        <partial name="_MealCard" model="meal" />
+    }
+}
+
+<style>
+.mdl-card {
+    margin: 8px;
+    display: inline-block;
+}
+</style>
