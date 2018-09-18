@@ -5,7 +5,7 @@ using System.Linq;
 using System.Text;
 
 namespace StudentMeal.DataAccess {
-    class FakeDataRepository : IRepository {
+    internal class FakeDataRepository : IRepository {
         private static readonly ICollection<Student> _students = new HashSet<Student>();
 
         private static readonly ICollection<Meal> _meals = new HashSet<Meal>();
@@ -74,21 +74,21 @@ namespace StudentMeal.DataAccess {
             }
         }
 
+        public IQueryable<Student> StudentList {
+            get {
+                return _students.AsQueryable();
+            }
+        }
+
+        public IQueryable<Meal> MealList {
+            get {
+                return _meals.AsQueryable();
+            }
+        }
+
         public void AddStudent(Student student) => _students.Add(student);
 
         public void AddMeal(Meal meal) => _meals.Add(meal);
-
-        public IEnumerable<Student> AllStudents {
-            get {
-                return _students.ToList().AsReadOnly();
-            }
-        }
-
-        public IEnumerable<Meal> AllMeals {
-            get {
-                return _meals.ToList().AsReadOnly();
-            }
-        }
 
         public void Dispose() {}
     }

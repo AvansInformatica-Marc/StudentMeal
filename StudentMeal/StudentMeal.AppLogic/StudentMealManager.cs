@@ -34,11 +34,11 @@ namespace StudentMeal.AppLogic {
             return canEnterMeal;
         }
 
-        public void AddNewStudent(Student student) => _dataRepository.AddStudent(student);
+        public void AddStudent(Student student) => _dataRepository.AddStudent(student);
 
-        public void AddNewMeal(Meal meal) => _dataRepository.AddMeal(meal);
+        public void AddMeal(Meal meal) => _dataRepository.AddMeal(meal);
 
-        public IEnumerable<Meal> GetMealsForPeriod(DateTime start, DateTime end) => _dataRepository.AllMeals.Where(meal => meal.DateTime.IsBetween(start, end));
+        public IEnumerable<Meal> GetMealsForPeriod(DateTime start, DateTime end) => _dataRepository.MealList.ToList().Where(meal => meal.DateTime.IsBetween(start, end));
 
         public IEnumerable<Meal> GetMealsForDate(DateTime date) => GetMealsForPeriod(date, date);
     }
