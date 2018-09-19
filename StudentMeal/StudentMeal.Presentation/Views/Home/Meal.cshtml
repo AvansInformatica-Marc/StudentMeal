@@ -1,0 +1,68 @@
+﻿@model StudentMeal.Domain.Meal
+
+@{ ViewData["Title"] = "Maaltijdinformatie";
+}
+
+<h4>@Model.Name</h4>
+<p>@Model.Description</p>
+
+<hr>
+
+<p class="detail">
+    <i class="material-icons">person</i>
+    <span>
+        <strong>Kok</strong>
+        <br>
+        <partial name="_ContactChip" model="Model.Cook.Name" />
+    </span>
+</p>
+
+<hr>
+
+<p class="detail">
+    <i class="material-icons">calendar_today</i>
+    <span>
+        <strong>Datum</strong>
+        <br>
+        @Model.DateTime.ToLongDateString()
+    </span>
+</p>
+
+<hr>
+
+<p class="detail">
+    <i class="material-icons">access_time</i>
+    <span>
+        <strong>Tijd</strong>
+        <br>
+        @Model.DateTime.ToShortTimeString()
+    </span>
+</p>
+
+<hr>
+
+<p class="detail">
+    <i class="material-icons">people</i>
+    <span>
+        <strong>Gasten</strong>
+        <br>
+        Totaal: @Model.GuestCount
+        <br>
+        Maximum: @Model.MaxGuests
+        <br>
+        @foreach (var guest in Model.Guests) {
+            <span style="padding:0px 4px;"> <partial name="_ContactChip" model="guest.Name" /> </span>
+        }
+    </span>
+</p>
+
+<style>
+    .detail > .material-icons, .detail > span {
+        vertical-align: middle;
+        padding: 0px 8px;
+    }
+
+    .detail > span {
+        display: inline-block;
+    }
+</style>

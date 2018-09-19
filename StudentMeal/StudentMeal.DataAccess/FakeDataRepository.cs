@@ -13,16 +13,19 @@ namespace StudentMeal.DataAccess {
         public FakeDataRepository() {
             if (_students.Count() == 0) {
                 var person1 = new Student {
+                    Id = 1,
                     Name = "Marc",
                     Email = "mj.bouwman1@student.avans.nl",
                     PhoneNumber = "+31 (6) 12345678"
                 };
                 var person2 = new Student {
+                    Id = 2,
                     Name = "Arjen",
                     Email = "arjen.lubach@student.avans.nl",
                     PhoneNumber = "+31 (6) 01234567"
                 };
                 var person3 = new Student {
+                    Id = 3,
                     Name = "Elon",
                     Email = "elon.musk@student.avans.nl",
                     PhoneNumber = "+31 (6) 87654321"
@@ -35,20 +38,22 @@ namespace StudentMeal.DataAccess {
                 var today = DateTime.Today;
 
                 var meal1 = new Meal {
+                    Id = 1,
                     DateTime = new DateTime(today.Year, today.Month, today.Day, 18, 10, 0),
                     Name = "Pannenkoeken",
-                    Description = "Overheerlijke pannenkoeken. Ook glutenvrij!",
+                    Description = "Overheerlijke pannenkoeken.",
                     Cook = person2,
                     Price = 1.20F,
                     MaxGuests = 3,
-                    Guests = new HashSet<Student> { person2, person3 }
+                    Guests = new HashSet<Student> { person1, person3 }
                 };
 
                 var next = today.AddDays(2);
 
                 var meal2 = new Meal {
+                    Id = 2,
                     DateTime = new DateTime(next.Year, next.Month, next.Day, 17, 55, 0),
-                    Name = "Franse ovenfriet",
+                    Name = "Friet/patat",
                     Description = "Franse frietjes uit de oven.",
                     Cook = person3,
                     Price = 0.80F,
@@ -59,9 +64,10 @@ namespace StudentMeal.DataAccess {
                 var next2 = today.AddDays(5);
 
                 var meal3 = new Meal {
+                    Id = 3,
                     DateTime = new DateTime(next2.Year, next2.Month, next2.Day, 18, 0, 0),
-                    Name = "Aardappelgerecht met wortelen",
-                    Description = "Maaltijd bereid met aardappelen en wortels.",
+                    Name = "Spaghetti",
+                    Description = "Spaghetti",
                     Cook = person3,
                     Price = 2.80F,
                     MaxGuests = 4,

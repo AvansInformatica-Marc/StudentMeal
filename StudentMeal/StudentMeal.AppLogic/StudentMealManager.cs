@@ -38,6 +38,8 @@ namespace StudentMeal.AppLogic {
 
         public void AddMeal(Meal meal) => _dataRepository.AddMeal(meal);
 
+        public Meal GetMealById(int mealId) => _dataRepository.MealList.Where(meal => meal.Id == mealId).FirstOrDefault();
+
         public IEnumerable<Meal> GetMealsForPeriod(DateTime start, DateTime end) => _dataRepository.MealList.ToList().Where(meal => meal.DateTime.IsBetween(start, end));
 
         public IEnumerable<Meal> GetMealsForDate(DateTime date) => GetMealsForPeriod(date, date);

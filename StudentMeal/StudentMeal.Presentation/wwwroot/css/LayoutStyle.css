@@ -17,3 +17,8 @@
 .mdl-card {
     margin: 16px;
 }
+
+hr {
+    border: none;
+    background: rgba(0, 0, 0, 0.05);
+}

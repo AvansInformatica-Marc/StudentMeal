@@ -1,20 +1,55 @@
 ﻿@model StudentMeal.Domain.Meal
 
-<div class="mdl-card mdl-shadow--2dp">
-    <div class="mdl-card__title">
-        @Model.Name
+<a asp-controller="Home" asp-action="Meal" asp-route-id="@Model.Id">
+    <div class="mdl-card mdl-shadow--2dp">
+        <div class="mdl-card__title">
+            @Model.Name
+        </div>
+        <div class="mdl-card__supporting-text">
+            <table>
+                <tr>
+                    <td>
+                        <p>
+                            <strong>Kok</strong>
+                            <br>
+                            <partial name="_ContactChip" model="Model.Cook.Name" />
+                        </p>
+                    </td>
+                    <td>
+                        <p>
+                            <i class="material-icons vam">calendar_today</i> <strong class="vam">Datum</strong>
+                            <br>
+                            @Model.DateTime.ToShortDateString()
+                        </p>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <p>
+                            <i class="material-icons vam">people</i> <strong class="vam">Aantal gasten</strong>
+                            <br>
+                            @Model.GuestCount (max. @Model.MaxGuests)
+                        </p>
+                    </td>
+                    <td>
+                        <p>
+                            <i class="material-icons vam">access_time</i> <strong class="vam">Tijd</strong>
+                            <br>
+                            @Model.DateTime.ToShortTimeString()
+                        </p>
+                    </td>
+                </tr>
+            </table>
+        </div>
     </div>
-    <div class="mdl-card__supporting-text">
-        <p>
-            <strong>Kok</strong>
-            <br>
-            <partial name="_ContactChip" model="Model.Cook.Name" />
-        </p>
+</a>
 
-        <p>
-            <strong>Aantal gasten</strong>
-            <br>
-            @Model.GuestCount (max. @Model.MaxGuests)
-        </p>
-    </div>
-</div>
+<style>
+    .vam {
+        vertical-align: middle;
+    }
+
+    td {
+        padding: 0px 8px;
+    }
+</style>

@@ -11,8 +11,6 @@ using StudentMeal.Presentation.Models;
 
 namespace StudentMeal.Controllers {
     public class HomeController : Controller {
-        //private static readonly Random random = new Random();
-
         private readonly StudentMealManager _studentMealManager = new StudentMealManager(RepositoryFactory.FakeDataRepository);
 
         public IActionResult Index() {
@@ -20,6 +18,10 @@ namespace StudentMeal.Controllers {
                 Today = _studentMealManager.GetMealsForDate(DateTime.Today),
                 Upcoming = _studentMealManager.GetMealsForPeriod(DateTime.Today.AddDays(1), DateTime.Today.AddDays(2 * 7))
             });
+        }
+
+        public IActionResult Meal(int id) {
+            return View(_studentMealManager.GetMealById(id));
         }
     }
 }
