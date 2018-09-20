@@ -35,5 +35,28 @@ namespace StudentMeal.Controllers {
                 return View(manager.GetMealById(id));
             }
         }
+
+        [HttpGet]
+        public IActionResult NewMeal() {
+            return View();
+        }
+
+        [HttpPost]
+        public IActionResult NewMeal(Meal meal) {
+            meal.Cook = new Student {
+                Id = 3,
+                Name = "Elon",
+                Email = "elon.musk@student.avans.nl",
+                PhoneNumber = "+31 (6) 87654321"
+            };
+            if (ModelState.IsValid) {
+                using (var manager = CreateStudentMealManager()) {
+                    manager.AddMeal(meal);
+                }
+                return View("MealInfo", meal);
+            } else {
+                return View();
+            }
+        }
     }
 }

@@ -22,3 +22,9 @@ hr {
     border: none;
     background: rgba(0, 0, 0, 0.05);
 }
+
+.mdl-button--fab_bottomright {
+    position: fixed !important;
+    bottom: 32px !important;
+    right: 32px !important;
+}
