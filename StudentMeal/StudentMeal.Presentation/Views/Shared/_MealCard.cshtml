@@ -4,49 +4,38 @@
     <div class="mdl-card mdl-shadow--2dp">
         <div class="mdl-card__title">
             @Model.Name
+            <span style="position:absolute;top:0px;right:0px;margin:16px;">€@String.Format("{0:0.00}", Model.Price)</span>
         </div>
         <div class="mdl-card__supporting-text">
-            <table>
-                <tr>
-                    <td>
-                        <p>
-                            <strong>Kok</strong>
-                            <br>
-                            <partial name="_ContactChip" model="Model.Cook.Name" />
-                        </p>
-                    </td>
-                    <td>
-                        <p>
-                            <i class="material-icons vam">calendar_today</i> <strong class="vam">Datum</strong>
-                            <br>
-                            @Model.DateTime.ToShortDateString()
-                        </p>
-                    </td>
-                </tr>
-                <tr>
-                    <td>
-                        <p>
-                            <i class="material-icons vam">people</i> <strong class="vam">Aantal gasten</strong>
-                            <br>
-                            @Model.GuestCount (max. @Model.MaxGuests)
-                        </p>
-                    </td>
-                    <td>
-                        <p>
-                            <i class="material-icons vam">access_time</i> <strong class="vam">Tijd</strong>
-                            <br>
-                            @Model.DateTime.ToShortTimeString()
-                        </p>
-                    </td>
-                </tr>
-            </table>
+            <span class="detail">
+                <i class="material-icons" id="mealDatailCook@(Model.Id)">person</i>
+                <div class="mdl-tooltip mdl-tooltip--large" data-mdl-for="mealDatailCook@(Model.Id)">Kok</div>
+                <span><partial name="_ContactChip" model="Model.Cook.Name" /></span>
+            </span>
+            <br><br>
+                <span class="detail">
+                    <i class="material-icons" id="mealDetailGuests@(Model.Id)">people</i>
+                    <div class="mdl-tooltip mdl-tooltip--large" data-mdl-for="mealDetailGuests@(Model.Id)">Gasten</div>
+                    <span>@Model.GuestCount</span>
+                </span>
+            <br><br>
+                <span class="detail">
+                    <i class="material-icons" id="mealDetailDateTime@(Model.Id)">access_time</i>
+                    <div class="mdl-tooltip mdl-tooltip--large" data-mdl-for="mealDetailDateTime@(Model.Id)">Datum & tijd</div>
+                    <span>@string.Format("{0:ddd d MMM}", Model.DateTime), @Model.DateTime.ToShortTimeString()</span>
+                </span>
         </div>
     </div>
 </a>
 
 <style>
-    .vam {
+    .detail > span, .detail .material-icons {
         vertical-align: middle;
+        padding: 0px 8px;
+    }
+
+    .detail > span {
+        display: inline-block;
     }
 
     td {

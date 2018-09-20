@@ -28,3 +28,12 @@ hr {
     bottom: 32px !important;
     right: 32px !important;
 }
+
+.mdl-button--fab {
+    z-index: 50;
+}
+
+.mdl-layout .mdl-layout__header,
+.mdl-layout .mdl-layout__drawer-button {
+    color: white;
+}
