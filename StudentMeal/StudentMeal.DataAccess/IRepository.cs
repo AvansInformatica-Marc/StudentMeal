@@ -6,12 +6,16 @@ using System.Text;
 
 namespace StudentMeal.DataAccess {
     public interface IRepository : IDisposable {
-        IQueryable<Student> StudentList { get; }
+        IQueryable<Student> Students { get; }
 
-        IQueryable<Meal> MealList { get; }
+        IQueryable<Meal> Meals { get; }
 
         void AddStudent(Student student);
 
         void AddMeal(Meal meal);
+
+        void AddStudentAsGuestToMeal(Student student, Meal meal);
+
+        void SaveChanges();
     }
 }

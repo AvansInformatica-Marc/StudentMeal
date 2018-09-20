@@ -11,17 +11,29 @@ using StudentMeal.Presentation.Models;
 
 namespace StudentMeal.Controllers {
     public class HomeController : Controller {
-        private readonly StudentMealManager _studentMealManager = new StudentMealManager(RepositoryFactory.FakeDataRepository);
+        private readonly IServiceProvider _serviceProvider;
 
-        public IActionResult Index() {
-            return View(new IndexViewModel {
-                Today = _studentMealManager.GetMealsForDate(DateTime.Today),
-                Upcoming = _studentMealManager.GetMealsForPeriod(DateTime.Today.AddDays(1), DateTime.Today.AddDays(2 * 7))
-            });
+        public HomeController([FromServices] IServiceProvider serviceProvider) {
+            _serviceProvider = serviceProvider;
         }
 
-        public IActionResult Meal(int id) {
-            return View(_studentMealManager.GetMealById(id));
+        private StudentMealManager CreateStudentMealManager() {
+            return new StudentMealManager(new RepositoryFactory(_serviceProvider).FakeDataRepository);
+        }
+
+        public IActionResult Index() {
+            using (var manager = CreateStudentMealManager()) {
+                return View(new IndexViewModel {
+                    Today = manager.GetMealsForDate(DateTime.Today),
+                    Upcoming = manager.GetMealsForPeriod(DateTime.Today.AddDays(1), DateTime.Today.AddDays(2 * 7))
+                });
+            }
+        }
+
+        public IActionResult MealInfo(int id) {
+            using (var manager = CreateStudentMealManager()) {
+                return View(manager.GetMealById(id));
+            }
         }
     }
 }

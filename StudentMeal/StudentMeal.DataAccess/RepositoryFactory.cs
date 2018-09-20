@@ -1,16 +1,22 @@
-﻿using System;
+﻿using Microsoft.Extensions.DependencyInjection;
+using System;
 using System.Collections.Generic;
 using System.Text;
 
 namespace StudentMeal.DataAccess {
     public class RepositoryFactory {
-        public static IRepository DatabaseRepository {
+        private IServiceProvider _serviceProvider;
+        public RepositoryFactory(IServiceProvider serviceProvider) {
+            _serviceProvider = serviceProvider;
+        }
+
+        public IRepository DatabaseRepository {
             get {
-                return new DatabaseRepository();
+                return new DatabaseRepository(_serviceProvider.GetRequiredService<StudentMealDbContext>());
             }
         }
 
-        public static IRepository FakeDataRepository {
+        public IRepository FakeDataRepository {
             get {
                 return new FakeDataRepository();
             }

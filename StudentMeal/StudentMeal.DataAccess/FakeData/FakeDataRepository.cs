@@ -10,7 +10,7 @@ namespace StudentMeal.DataAccess {
 
         private static readonly ICollection<Meal> _meals = new HashSet<Meal>();
 
-        public FakeDataRepository() {
+        internal FakeDataRepository() {
             if (_students.Count() == 0) {
                 var person1 = new Student {
                     Id = 1,
@@ -31,9 +31,9 @@ namespace StudentMeal.DataAccess {
                     PhoneNumber = "+31 (6) 87654321"
                 };
 
-                _students.Add(person1);
-                _students.Add(person2);
-                _students.Add(person3);
+                AddStudent(person1);
+                AddStudent(person2);
+                AddStudent(person3);
 
                 var today = DateTime.Today;
 
@@ -44,8 +44,7 @@ namespace StudentMeal.DataAccess {
                     Description = "Overheerlijke pannenkoeken.",
                     Cook = person2,
                     Price = 1.20F,
-                    MaxGuests = 3,
-                    Guests = new HashSet<Student> { person1, person3 }
+                    MaxGuests = 3
                 };
 
                 var next = today.AddDays(2);
@@ -57,8 +56,7 @@ namespace StudentMeal.DataAccess {
                     Description = "Franse frietjes uit de oven.",
                     Cook = person3,
                     Price = 0.80F,
-                    MaxGuests = 6,
-                    Guests = new HashSet<Student> { person1 }
+                    MaxGuests = 6
                 };
 
                 var next2 = today.AddDays(5);
@@ -70,23 +68,26 @@ namespace StudentMeal.DataAccess {
                     Description = "Spaghetti",
                     Cook = person3,
                     Price = 2.80F,
-                    MaxGuests = 4,
-                    Guests = new HashSet<Student> { }
+                    MaxGuests = 4
                 };
 
-                _meals.Add(meal1);
-                _meals.Add(meal2);
-                _meals.Add(meal3);
+                AddMeal(meal1);
+                AddMeal(meal2);
+                AddMeal(meal3);
+
+                AddStudentAsGuestToMeal(person1, meal1);
+                AddStudentAsGuestToMeal(person3, meal1);
+                AddStudentAsGuestToMeal(person1, meal2);
             }
         }
 
-        public IQueryable<Student> StudentList {
+        public IQueryable<Student> Students {
             get {
                 return _students.AsQueryable();
             }
         }
 
-        public IQueryable<Meal> MealList {
+        public IQueryable<Meal> Meals {
             get {
                 return _meals.AsQueryable();
             }
@@ -96,6 +97,17 @@ namespace StudentMeal.DataAccess {
 
         public void AddMeal(Meal meal) => _meals.Add(meal);
 
+        public void AddStudentAsGuestToMeal(Student student, Meal meal) {
+            var mealStudent = new MealStudent {
+                Student = student,
+                Meal = meal
+            };
+            student.MealsAsGuestList.Add(mealStudent);
+            meal.GuestsList.Add(mealStudent);
+        }
+
         public void Dispose() {}
+
+        public void SaveChanges() {}
     }
 }

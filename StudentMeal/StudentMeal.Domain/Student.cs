@@ -1,5 +1,6 @@
 ﻿using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
+using System.Linq;
 
 namespace StudentMeal.Domain {
     public class Student {
@@ -14,10 +15,14 @@ namespace StudentMeal.Domain {
         [Required, StringLength(16), Phone, DataType(DataType.PhoneNumber)]
         public string PhoneNumber { get; set; }
 
-        [Required]
         public virtual ICollection<Meal> MealsAsCook { get; set; } = new HashSet<Meal>();
 
-        [Required]
-        public virtual ICollection<Meal> MealsAsGuest { get; set; } = new HashSet<Meal>();
+        public virtual ICollection<MealStudent> MealsAsGuestList { get; set; } = new HashSet<MealStudent>();
+
+        public IEnumerable<Meal> MealsAsGuest {
+            get {
+                return MealsAsGuestList.Select(studentMeal => studentMeal.Meal);
+            }
+        }
     }
 }

@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
+using System.Linq;
 
 namespace StudentMeal.Domain {
     public class Meal {
@@ -23,12 +24,17 @@ namespace StudentMeal.Domain {
         [DataType(DataType.Currency)]
         public float Price { get; set; }
 
-        [Required]
-        public virtual ICollection<Student> Guests { get; set; } = new HashSet<Student>();
+        public virtual ICollection<MealStudent> GuestsList { get; set; } = new HashSet<MealStudent>();
 
         public int GuestCount {
             get {
-                return Guests.Count;
+                return Guests.Count();
+            }
+        }
+
+        public IEnumerable<Student> Guests {
+            get {
+                return GuestsList.Select(studentMeal => studentMeal.Student);
             }
         }
     }
