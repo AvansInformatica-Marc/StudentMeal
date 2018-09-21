@@ -5,14 +5,14 @@ using System.Linq;
 using System.Text;
 
 namespace StudentMeal.DataAccess {
-    internal class FakeDataRepository : IRepository {
+    public class FakeDataRepository : IRepository {
         private static readonly Random _random = new Random();
 
         private static readonly ICollection<Student> _students = new HashSet<Student>();
 
         private static readonly ICollection<Meal> _meals = new HashSet<Meal>();
 
-        internal FakeDataRepository() {
+        public FakeDataRepository() {
             if (_students.Count() == 0) {
                 var person1 = new Student {
                     Id = 1,
@@ -110,8 +110,6 @@ namespace StudentMeal.DataAccess {
             student.MealsAsGuestList.Add(mealStudent);
             meal.GuestsList.Add(mealStudent);
         }
-
-        public void Dispose() {}
 
         public void SaveChanges() {}
     }

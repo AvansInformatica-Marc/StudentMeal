@@ -5,7 +5,7 @@ using System.Linq;
 using System.Text;
 
 namespace StudentMeal.DataAccess {
-    public interface IRepository : IDisposable {
+    public interface IRepository {
         IQueryable<Student> Students { get; }
 
         IQueryable<Meal> Meals { get; }

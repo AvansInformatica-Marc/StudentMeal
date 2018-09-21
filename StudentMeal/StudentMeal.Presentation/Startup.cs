@@ -4,6 +4,7 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
+using StudentMeal.AppLogic;
 using StudentMeal.DataAccess;
 using System;
 
@@ -18,6 +19,10 @@ namespace StudentMeal {
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services) {
             services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_1);
+
+            services.AddTransient<StudentMealDbContext>();
+            services.AddTransient<IRepository, FakeDataRepository>();
+            services.AddTransient<StudentMealManager>();
 
             services.AddDbContext<StudentMealDbContext>(options => options.UseLazyLoadingProxies().UseSqlServer(Configuration["Database:StudentMeal:ConnectionString"]));
         }

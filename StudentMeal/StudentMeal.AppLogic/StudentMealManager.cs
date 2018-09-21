@@ -6,7 +6,7 @@ using System.Linq;
 using System.Text;
 
 namespace StudentMeal.AppLogic {
-    public class StudentMealManager : IDisposable {
+    public class StudentMealManager {
         private readonly IRepository _dataRepository;
         public StudentMealManager(IRepository dataRepository) {
             _dataRepository = dataRepository;
@@ -17,11 +17,20 @@ namespace StudentMeal.AppLogic {
             (meal.Cook == student && student.MealsAsCook.Contains(meal)) || 
             meal.GuestCount + 1 > meal.MaxGuests);
 
-        public void AddStudentToMealAsGuest(Student student, Meal meal) => _dataRepository.AddStudentAsGuestToMeal(student, meal);
+        public void AddStudentToMealAsGuest(Student student, Meal meal) {
+            _dataRepository.AddStudentAsGuestToMeal(student, meal);
+            _dataRepository.SaveChanges();
+        }
 
-        public void AddStudent(Student student) => _dataRepository.AddStudent(student);
+        public void AddStudent(Student student) {
+            _dataRepository.AddStudent(student);
+            _dataRepository.SaveChanges();
+        }
 
-        public void AddMeal(Meal meal) => _dataRepository.AddMeal(meal);
+        public void AddMeal(Meal meal) {
+            _dataRepository.AddMeal(meal);
+            _dataRepository.SaveChanges();
+        }
 
         public Meal GetMealById(int mealId) => _dataRepository.Meals.Where(meal => meal.Id == mealId).FirstOrDefault();
 
@@ -33,6 +42,9 @@ namespace StudentMeal.AppLogic {
 
         public IEnumerable<Meal> GetMealsForDate(DateTime date) => GetMealsForPeriod(date, date);
 
-        public void Dispose() => _dataRepository.Dispose();
+        public void UpdateMeal(Meal oldMeal, Func<Meal, Meal> editFunction) {
+            oldMeal = editFunction(oldMeal);
+            _dataRepository.SaveChanges();
+        }
     }
 }
