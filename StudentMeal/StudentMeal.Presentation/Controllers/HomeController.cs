@@ -37,12 +37,7 @@ namespace StudentMeal.Controllers {
                 ModelState.AddModelError(nameof(meal.DateTime), "Er is al een maaltijd op de gegeven datum!");
             }
 
-            meal.Cook = new Student {
-                Id = 3,
-                Name = "Elon",
-                Email = "elon.musk@student.avans.nl",
-                PhoneNumber = "+31 (6) 87654321"
-            };
+            meal.Cook = _studentMealManager.GetStudentByEmail(HttpContext.User.Identity.Name);
 
             if (ModelState.IsValid) {
                 //_studentMealManager.AddMeal(meal);

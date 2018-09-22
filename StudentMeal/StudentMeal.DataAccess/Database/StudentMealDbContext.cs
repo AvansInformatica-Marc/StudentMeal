@@ -3,7 +3,7 @@ using StudentMeal.Domain;
 
 namespace StudentMeal.DataAccess {
     public class StudentMealDbContext : DbContext {
-        public StudentMealDbContext(DbContextOptions options) : base(options) { }
+        public StudentMealDbContext(DbContextOptions<StudentMealDbContext> options) : base(options) { }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder) {
             base.OnModelCreating(modelBuilder);

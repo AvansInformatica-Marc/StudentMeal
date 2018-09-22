@@ -27,8 +27,8 @@ namespace StudentMeal {
 
             services.AddTransient<UserDbContext>();
 
-            services.AddDbContext<StudentMealDbContext>(options => options.UseLazyLoadingProxies().UseSqlServer(Configuration["Database:StudentMeal:ConnectionString"]));
-            services.AddDbContext<UserDbContext>(options => options.UseSqlServer(Configuration["Database:StudentMealAuth:ConnectionString"]));
+            services.AddDbContext<StudentMealDbContext>(options => options.UseLazyLoadingProxies().UseSqlServer(Configuration.GetConnectionString("defaultConnection")));
+            services.AddDbContext<UserDbContext>(options => options.UseSqlServer(Configuration.GetConnectionString("defaultAuthConnection")));
 
             services.AddIdentity<IdentityUser, IdentityRole>().AddEntityFrameworkStores<UserDbContext>().AddDefaultTokenProviders();
         }

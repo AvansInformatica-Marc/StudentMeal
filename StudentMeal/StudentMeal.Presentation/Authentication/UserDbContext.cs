@@ -4,6 +4,6 @@ using Microsoft.EntityFrameworkCore;
 
 namespace StudentMeal.DataAccess.Database {
     public class UserDbContext : IdentityDbContext<IdentityUser> {
-        public UserDbContext(DbContextOptions options) : base(options) { }
+        public UserDbContext(DbContextOptions<UserDbContext> options) : base(options) { }
     }
 }
