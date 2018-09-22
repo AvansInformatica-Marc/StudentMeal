@@ -1,0 +1,37 @@
+﻿@model StudentMeal.Presentation.Models.RegisterModel
+
+@{
+    ViewData["Title"] = "Registreren";
+}
+
+<form asp-action="Register">
+    <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+    <br>
+    <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
+        <input asp-for="Student.Name" class="mdl-textfield__input">
+        <label asp-for="Student.Name" class="mdl-textfield__label">Naam</label>
+        <span asp-validation-for="Student.Name" class="mdl-textfield__error"></span>
+    </div>
+    <br><br>
+    <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
+        <input asp-for="Student.Email" class="mdl-textfield__input">
+        <label asp-for="Student.Email" class="mdl-textfield__label">Email</label>
+        <span asp-validation-for="Student.Email" class="mdl-textfield__error"></span>
+    </div>
+    <br><br>
+    <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
+        <input asp-for="Student.PhoneNumber" class="mdl-textfield__input">
+        <label asp-for="Student.PhoneNumber" class="mdl-textfield__label">Telefoonnummer</label>
+        <span asp-validation-for="Student.PhoneNumber" class="mdl-textfield__error"></span>
+    </div>
+    <br><br>
+    <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
+        <input asp-for="Password" class="mdl-textfield__input">
+        <label asp-for="Password" class="mdl-textfield__label">Wachtwoord</label>
+        <span asp-validation-for="Password" class="mdl-textfield__error"></span>
+    </div>
+    <br><br>
+    <div class="form-group">
+        <input type="submit" value="Registreer" class="mdl-button mdl-js-button mdl-button--raised mdl-button--accent" />
+    </div>
+</form>

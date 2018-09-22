@@ -37,3 +37,31 @@ hr {
 .mdl-layout .mdl-layout__drawer-button {
     color: white;
 }
+
+.mdl-textfield__error {
+    visibility: visible !important;
+}
+
+.mdl-layout__drawer > .mdl-layout--account-info {
+    position: relative;
+    height: 160px;
+}
+
+.mdl-layout__drawer > .mdl-layout--account-info > div {
+    position: absolute;
+    bottom: 0;
+    padding: 16px;
+}
+
+.mdl-chip__contact-large {
+    width: 48px;
+    height: 48px;
+    border-radius: 48px;
+    line-height: 48px;
+    font-size: 27px;
+}
+
+.mdl-layout__drawer > .mdl-layout--account-info .username {
+    display: block;
+    padding-top: 8px;
+}

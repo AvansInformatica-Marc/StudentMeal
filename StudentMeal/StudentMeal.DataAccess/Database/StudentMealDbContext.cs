@@ -1,8 +1,5 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using StudentMeal.Domain;
-using System;
-using System.Collections.Generic;
-using System.Text;
 
 namespace StudentMeal.DataAccess {
     public class StudentMealDbContext : DbContext {

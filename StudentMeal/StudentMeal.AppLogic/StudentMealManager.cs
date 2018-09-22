@@ -3,7 +3,6 @@ using StudentMeal.Domain;
 using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Text;
 
 namespace StudentMeal.AppLogic {
     public class StudentMealManager {
@@ -32,7 +31,11 @@ namespace StudentMeal.AppLogic {
             _dataRepository.SaveChanges();
         }
 
-        public Meal GetMealById(int mealId) => _dataRepository.Meals.Where(meal => meal.Id == mealId).FirstOrDefault();
+        public Meal GetMealById(int id) => _dataRepository.Meals.Where(meal => meal.Id == id).FirstOrDefault();
+
+        public Student GetStudentById(int id) => _dataRepository.Students.Where(student => student.Id == id).FirstOrDefault();
+
+        public Student GetStudentByEmail(string email) => _dataRepository.Students.Where(student => student.Email == email).FirstOrDefault();
 
         public IEnumerable<Meal> GetMealsForPeriod(DateTime start, DateTime end, bool ignoreTime = true) {
             var startDate = ignoreTime ? new DateTime(start.Year, start.Month, start.Day, 0, 0, 0) : start;
@@ -42,8 +45,17 @@ namespace StudentMeal.AppLogic {
 
         public IEnumerable<Meal> GetMealsForDate(DateTime date) => GetMealsForPeriod(date, date);
 
-        public void UpdateMeal(Meal oldMeal, Func<Meal, Meal> editFunction) {
-            oldMeal = editFunction(oldMeal);
+        public void UpdateMeal(int id, Func<Meal, Meal> editFunction) {
+            var meal = GetMealById(id);
+            meal = editFunction(meal);
+            meal.Id = id;
+            _dataRepository.SaveChanges();
+        }
+
+        public void UpdateStudent(int id, Func<Student, Student> editFunction) {
+            var student = GetStudentById(id);
+            student = editFunction(student);
+            student.Id = id;
             _dataRepository.SaveChanges();
         }
     }

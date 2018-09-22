@@ -1,11 +1,8 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Diagnostics;
 using System.Linq;
-using System.Threading.Tasks;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using StudentMeal.AppLogic;
-using StudentMeal.DataAccess;
 using StudentMeal.Domain;
 using StudentMeal.Presentation.Models;
 
@@ -24,16 +21,17 @@ namespace StudentMeal.Controllers {
             });
         }
 
+        [Authorize]
         public IActionResult MealInfo(int id) {
             return View(_studentMealManager.GetMealById(id));
         }
 
-        [HttpGet]
+        [Authorize, HttpGet]
         public IActionResult NewMeal() {
             return View();
         }
 
-        [HttpPost]
+        [Authorize, HttpPost]
         public IActionResult NewMeal(Meal meal) {
             if (_studentMealManager.GetMealsForDate(meal.DateTime).Count() != 0) {
                 ModelState.AddModelError(nameof(meal.DateTime), "Er is al een maaltijd op de gegeven datum!");
@@ -47,7 +45,7 @@ namespace StudentMeal.Controllers {
             };
 
             if (ModelState.IsValid) {
-                _studentMealManager.AddMeal(meal);
+                //_studentMealManager.AddMeal(meal);
                 return View("MealInfo", meal);
             } else {
                 return View();

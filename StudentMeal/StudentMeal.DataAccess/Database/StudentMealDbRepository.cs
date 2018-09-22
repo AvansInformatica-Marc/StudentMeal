@@ -1,15 +1,11 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using Microsoft.EntityFrameworkCore;
+﻿using System.Linq;
 using StudentMeal.Domain;
 
 namespace StudentMeal.DataAccess {
-    internal class DatabaseRepository : IRepository {
+    internal class StudentMealDbRepository : IRepository {
         private readonly StudentMealDbContext _context;
 
-        internal DatabaseRepository(StudentMealDbContext context) {
+        internal StudentMealDbRepository(StudentMealDbContext context) {
             _context = context;
         }
 

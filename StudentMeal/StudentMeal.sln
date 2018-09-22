@@ -11,7 +11,7 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "StudentMeal.DataAccess", "S
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "StudentMeal.Domain", "StudentMeal.Domain\StudentMeal.Domain.csproj", "{B8D3CC70-1D24-45B0-9F41-99A27D12E409}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "StudentMeal.AppLogic", "StudentMeal.AppLogic\StudentMeal.AppLogic.csproj", "{25D18FBF-86FA-4D55-BDA8-6D6FC661CDD4}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "StudentMeal.AppLogic", "StudentMeal.AppLogic\StudentMeal.AppLogic.csproj", "{25D18FBF-86FA-4D55-BDA8-6D6FC661CDD4}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

@@ -1,9 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel.DataAnnotations;
-using System.Text;
-
-namespace StudentMeal.Domain {
+﻿namespace StudentMeal.Domain {
     public class MealStudent {
         public int Id { get; set; }
 

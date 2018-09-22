@@ -8,7 +8,7 @@ using StudentMeal.DataAccess;
 
 namespace StudentMeal.DataAccess.Migrations
 {
-    [DbContext(typeof(DatabaseRepository))]
+    [DbContext(typeof(StudentMealDbRepository))]
     partial class DatabaseRepositoryModelSnapshot : ModelSnapshot
     {
         protected override void BuildModel(ModelBuilder modelBuilder)

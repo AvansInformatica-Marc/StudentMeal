@@ -9,7 +9,7 @@ using StudentMeal.DataAccess;
 
 namespace StudentMeal.DataAccess.Migrations
 {
-    [DbContext(typeof(DatabaseRepository))]
+    [DbContext(typeof(StudentMealDbRepository))]
     [Migration("20180920075110_Initial migration")]
     partial class Initialmigration
     {

@@ -21,10 +21,26 @@
                 <div class="mdl-layout-spacer"></div>
             </div>
         </header>
-        <div class="mdl-layout__drawer">
-            <span class="mdl-layout-title">Studentenmaaltijd</span>
+        <div class="mdl-layout__drawer mdl-color--white">
+            @if (this.User.Identity.Name == null) {
+                <span class="mdl-layout-title">Studentenmaaltijd</span>
+            } else {
+                <div class="mdl-layout--account-info mdl-color--grey-200">
+                    <div>
+                        <span class="mdl-chip__contact mdl-chip__contact-large mdl-color--light-green-A200 mdl-color-text--black">@this.User.Identity.Name[0]</span>
+                        <br>
+                        <span class="username">@this.User.Identity.Name</span>
+                    </div>
+                </div>
+            }
             <nav class="mdl-navigation">
-                <a class="mdl-navigation__link @(ViewData["Title"] == "Start" ? "mdl-color--grey-300" : "")" asp-action="Index">Start</a>
+                <a class="mdl-navigation__link @(ViewData["Title"] == "Start" ? "mdl-color--grey-200" : "")" asp-controller="Home" asp-action="Index">Start</a>
+                @if (this.User.Identity.Name == null) {
+                    <a class="mdl-navigation__link @(ViewData["Title"] == "Inloggen" ? "mdl-color--grey-200" : "")" asp-controller="Account" asp-action="Login">Inloggen</a>
+                    <a class="mdl-navigation__link @(ViewData["Title"] == "Registreren" ? "mdl-color--grey-200" : "")" asp-controller="Account" asp-action="Register">Registreren</a>
+                } else {
+                    <a class="mdl-navigation__link" asp-controller="Account" asp-action="Logout">Uitloggen</a>
+                }
             </nav>
         </div>
         <main class="mdl-layout__content">
@@ -32,6 +48,10 @@
                 @RenderBody()
             </div>
         </main>
+        <div class="mdl-js-snackbar mdl-snackbar">
+            <div class="mdl-snackbar__text"></div>
+            <button class="mdl-snackbar__action" type="button"></button>
+        </div>
     </div>
 </body>
 </html>

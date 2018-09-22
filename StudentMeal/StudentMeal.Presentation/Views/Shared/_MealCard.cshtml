@@ -1,6 +1,6 @@
 ﻿@model StudentMeal.Domain.Meal
 
-<a asp-controller="Home" asp-action="MealInfo" asp-route-id="@Model.Id">
+<a id="mealClick@(Model.Id)" asp-controller="Home" asp-action="MealInfo" asp-route-id="@Model.Id">
     <div class="mdl-card mdl-shadow--2dp">
         <div class="mdl-card__title">
             @Model.Name
@@ -13,17 +13,17 @@
                 <span><partial name="_ContactChip" model="Model.Cook.Name" /></span>
             </span>
             <br><br>
-                <span class="detail">
-                    <i class="material-icons" id="mealDetailGuests@(Model.Id)">people</i>
-                    <div class="mdl-tooltip mdl-tooltip--large" data-mdl-for="mealDetailGuests@(Model.Id)">Gasten</div>
-                    <span>@Model.GuestCount</span>
-                </span>
+            <span class="detail">
+                <i class="material-icons" id="mealDetailGuests@(Model.Id)">people</i>
+                <div class="mdl-tooltip mdl-tooltip--large" data-mdl-for="mealDetailGuests@(Model.Id)">Gasten</div>
+                <span>@Model.GuestCount</span>
+            </span>
             <br><br>
-                <span class="detail">
-                    <i class="material-icons" id="mealDetailDateTime@(Model.Id)">access_time</i>
-                    <div class="mdl-tooltip mdl-tooltip--large" data-mdl-for="mealDetailDateTime@(Model.Id)">Datum & tijd</div>
-                    <span>@string.Format("{0:ddd d MMM}", Model.DateTime), @Model.DateTime.ToShortTimeString()</span>
-                </span>
+            <span class="detail">
+                <i class="material-icons" id="mealDetailDateTime@(Model.Id)">access_time</i>
+                <div class="mdl-tooltip mdl-tooltip--large" data-mdl-for="mealDetailDateTime@(Model.Id)">Datum & tijd</div>
+                <span>@string.Format("{0:ddd d MMM}", Model.DateTime), @Model.DateTime.ToShortTimeString()</span>
+            </span>
         </div>
     </div>
 </a>
@@ -42,3 +42,9 @@
         padding: 0px 8px;
     }
 </style>
+
+@if (this.User.Identity.Name == null) {
+    <script>
+        document.getElementById("mealClick@(Model.Id)").href = "javascript:document.querySelector('.mdl-snackbar').MaterialSnackbar.showSnackbar({message: 'Om details te bekijken moet je ingelogd zijn.'});void(0);"
+    </script>
+}

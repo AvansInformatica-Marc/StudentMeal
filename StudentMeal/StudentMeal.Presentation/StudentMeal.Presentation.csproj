@@ -6,7 +6,7 @@
 
   <ItemGroup>
     <PackageReference Include="Microsoft.AspNetCore.App" />
-    <PackageReference Include="Microsoft.VisualStudio.Web.CodeGeneration.Design" Version="2.1.1" />
+    <PackageReference Include="Microsoft.VisualStudio.Web.CodeGeneration.Design" Version="2.1.4" />
   </ItemGroup>
 
   <ItemGroup>
@@ -18,6 +18,12 @@
     <ProjectReference Include="..\StudentMeal.AppLogic\StudentMeal.AppLogic.csproj" />
     <ProjectReference Include="..\StudentMeal.DataAccess\StudentMeal.DataAccess.csproj" />
     <ProjectReference Include="..\StudentMeal.Domain\StudentMeal.Domain.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Content Update="Views\Account\Register.cshtml">
+      <Pack>$(IncludeRazorContentInPack)</Pack>
+    </Content>
   </ItemGroup>
 
 </Project>

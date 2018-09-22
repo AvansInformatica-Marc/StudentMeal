@@ -1,12 +1,13 @@
 ﻿using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
+using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using StudentMeal.AppLogic;
 using StudentMeal.DataAccess;
-using System;
+using StudentMeal.DataAccess.Database;
 
 namespace StudentMeal {
     public class Startup {
@@ -24,7 +25,12 @@ namespace StudentMeal {
             services.AddTransient<IRepository, FakeDataRepository>();
             services.AddTransient<StudentMealManager>();
 
+            services.AddTransient<UserDbContext>();
+
             services.AddDbContext<StudentMealDbContext>(options => options.UseLazyLoadingProxies().UseSqlServer(Configuration["Database:StudentMeal:ConnectionString"]));
+            services.AddDbContext<UserDbContext>(options => options.UseSqlServer(Configuration["Database:StudentMealAuth:ConnectionString"]));
+
+            services.AddIdentity<IdentityUser, IdentityRole>().AddEntityFrameworkStores<UserDbContext>().AddDefaultTokenProviders();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -39,6 +45,7 @@ namespace StudentMeal {
             app.UseHttpsRedirection();
             app.UseStaticFiles();
             app.UseStatusCodePages();
+            app.UseAuthentication();
 
             app.UseMvc(routes => {
                 routes.MapRoute(
