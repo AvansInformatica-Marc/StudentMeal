@@ -15,10 +15,11 @@ namespace StudentMeal.Controllers {
         }
 
         public IActionResult Index() {
-            return View(new IndexViewModel {
+            var viewModel = new IndexViewModel {
                 Today = _studentMealManager.GetMealsForDate(DateTime.Today),
                 Upcoming = _studentMealManager.GetMealsForPeriod(DateTime.Today.AddDays(1), DateTime.Today.AddDays(2 * 7))
-            });
+            };
+            return View(viewModel);
         }
 
         [Authorize]
@@ -36,11 +37,14 @@ namespace StudentMeal.Controllers {
             if (_studentMealManager.GetMealsForDate(meal.DateTime).Count() != 0) {
                 ModelState.AddModelError(nameof(meal.DateTime), "Er is al een maaltijd op de gegeven datum!");
             }
+            if (meal.DateTime.CompareTo(DateTime.Now.AddDays(2 * 7)) > 0) {
+                ModelState.AddModelError(nameof(meal.DateTime), "Datum moet in de komende 2 weken zijn.");
+            }
 
             meal.Cook = _studentMealManager.GetStudentByEmail(HttpContext.User.Identity.Name);
 
             if (ModelState.IsValid) {
-                //_studentMealManager.AddMeal(meal);
+                _studentMealManager.AddMeal(meal);
                 return View("MealInfo", meal);
             } else {
                 return View();

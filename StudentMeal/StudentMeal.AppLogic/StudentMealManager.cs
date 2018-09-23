@@ -28,6 +28,7 @@ namespace StudentMeal.AppLogic {
 
         public void AddMeal(Meal meal) {
             _dataRepository.AddMeal(meal);
+            meal.Cook.MealsAsCook.Add(meal);
             _dataRepository.SaveChanges();
         }
 

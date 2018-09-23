@@ -22,7 +22,7 @@ namespace StudentMeal {
             services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_1);
 
             services.AddTransient<StudentMealDbContext>();
-            services.AddTransient<IRepository, FakeDataRepository>();
+            services.AddTransient<IRepository, StudentMealDbRepository>();
             services.AddTransient<StudentMealManager>();
 
             services.AddTransient<UserDbContext>();

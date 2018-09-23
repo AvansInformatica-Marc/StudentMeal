@@ -5,7 +5,7 @@
 }
 
 <h4>Vandaag</h4>
-@if (Model.Upcoming.Count() == 0) {
+@if (Model.Today.Count() == 0) {
     <p>Geen maaltijd voor vandaag</p>
 } else {
     @foreach (var meal in Model.Today) {

@@ -2,10 +2,10 @@
 using StudentMeal.Domain;
 
 namespace StudentMeal.DataAccess {
-    internal class StudentMealDbRepository : IRepository {
+    public class StudentMealDbRepository : IRepository {
         private readonly StudentMealDbContext _context;
 
-        internal StudentMealDbRepository(StudentMealDbContext context) {
+        public StudentMealDbRepository(StudentMealDbContext context) {
             _context = context;
         }
 
