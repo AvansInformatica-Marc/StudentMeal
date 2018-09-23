@@ -5,9 +5,9 @@ namespace StudentMeal.DataAccess {
     public interface IRepository {
         IQueryable<Student> Students { get; }
 
-        IQueryable<Meal> Meals { get; }
-
         void AddStudent(Student student);
+
+        IQueryable<Meal> Meals { get; }
 
         void AddMeal(Meal meal);
 

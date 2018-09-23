@@ -10,7 +10,7 @@ using StudentMeal.DataAccess;
 namespace StudentMeal.DataAccess.Migrations
 {
     [DbContext(typeof(StudentMealDbContext))]
-    [Migration("20180923111002_Initial Migration")]
+    [Migration("20180923163140_Initial Migration")]
     partial class InitialMigration
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -87,6 +87,9 @@ namespace StudentMeal.DataAccess.Migrations
                         .HasMaxLength(16);
 
                     b.HasKey("Id");
+
+                    b.HasIndex("Email")
+                        .IsUnique();
 
                     b.ToTable("Students");
                 });

@@ -14,19 +14,16 @@ namespace StudentMeal.DataAccess {
         public FakeDataRepository() {
             if (_students.Count() == 0) {
                 var person1 = new Student {
-                    Id = 1,
                     Name = "Marc",
                     Email = "mj.bouwman1@student.avans.nl",
                     PhoneNumber = "+31 (6) 12345678"
                 };
                 var person2 = new Student {
-                    Id = 2,
                     Name = "Arjen",
                     Email = "arjen.lubach@student.avans.nl",
                     PhoneNumber = "+31 (6) 01234567"
                 };
                 var person3 = new Student {
-                    Id = 3,
                     Name = "Elon",
                     Email = "elon.musk@student.avans.nl",
                     PhoneNumber = "+31 (6) 87654321"
@@ -92,7 +89,6 @@ namespace StudentMeal.DataAccess {
         }
 
         public void AddStudent(Student student) {
-            student.Id = _random.Next(1000);
             _students.Add(student);
         }
 

@@ -7,9 +7,12 @@ namespace StudentMeal.DataAccess {
 
         protected override void OnModelCreating(ModelBuilder modelBuilder) {
             base.OnModelCreating(modelBuilder);
+
             modelBuilder.Entity<Meal>().HasOne(meal => meal.Cook).WithMany(student => student.MealsAsCook);
             modelBuilder.Entity<Meal>().HasMany(meal => meal.GuestsList).WithOne(mealStudent => mealStudent.Meal);
             modelBuilder.Entity<Student>().HasMany(student => student.MealsAsGuestList).WithOne(mealStudent => mealStudent.Student);
+
+            //modelBuilder.Entity<Student>().HasIndex(u => u.Email).IsUnique();
         }
 
         internal DbSet<Student> Students { get; set; }

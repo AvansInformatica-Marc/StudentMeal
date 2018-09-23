@@ -1,10 +1,11 @@
 ﻿using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
 using System.Linq;
 
 namespace StudentMeal.Domain {
     public class Student {
-        public int Id { get; set; }
+        public int Id { get; set;  }
 
         [Required, StringLength(64), MinLength(2)]
         public string Name { get; set; }

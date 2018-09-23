@@ -41,7 +41,7 @@ namespace StudentMeal.Controllers {
                 ModelState.AddModelError(nameof(meal.DateTime), "Datum moet in de komende 2 weken zijn.");
             }
 
-            meal.Cook = _studentMealManager.GetStudentByEmail(HttpContext.User.Identity.Name);
+            meal.Cook = GetLoggedInStudent();
 
             if (ModelState.IsValid) {
                 _studentMealManager.AddMeal(meal);
@@ -106,7 +106,7 @@ namespace StudentMeal.Controllers {
                 ModelState.AddModelError(nameof(meal.DateTime), "Datum moet in de komende 2 weken zijn.");
             }
 
-            meal.Cook = _studentMealManager.GetStudentByEmail(HttpContext.User.Identity.Name);
+            meal.Cook = GetLoggedInStudent();
 
             if (ModelState.IsValid) {
                 _studentMealManager.UpdateMeal(meal.Id, oldMeal => meal);

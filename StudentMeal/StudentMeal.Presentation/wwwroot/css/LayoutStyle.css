@@ -69,3 +69,7 @@ hr {
 .mdl-button {
     margin: 0 8px !important;
 }
+
+.text-danger {
+    color: #B00020;
+}

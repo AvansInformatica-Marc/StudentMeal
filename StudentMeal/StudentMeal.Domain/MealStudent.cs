@@ -1,4 +1,7 @@
-﻿namespace StudentMeal.Domain {
+﻿using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
+
+namespace StudentMeal.Domain {
     public class MealStudent {
         public int Id { get; set; }
 

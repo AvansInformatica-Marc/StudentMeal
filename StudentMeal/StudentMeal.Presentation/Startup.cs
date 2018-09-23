@@ -21,11 +21,12 @@ namespace StudentMeal {
         public void ConfigureServices(IServiceCollection services) {
             services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_1);
 
-            services.AddTransient<StudentMealDbContext>();
+            //services.AddTransient<StudentMealDbContext>();
+
             services.AddTransient<IRepository, StudentMealDbRepository>();
             services.AddTransient<StudentMealManager>();
 
-            services.AddTransient<UserDbContext>();
+            //services.AddTransient<UserDbContext>();
 
             services.AddDbContext<StudentMealDbContext>(options => options.UseLazyLoadingProxies().UseSqlServer(Configuration.GetConnectionString("defaultConnection")));
             services.AddDbContext<UserDbContext>(options => options.UseSqlServer(Configuration.GetConnectionString("defaultAuthConnection")));

@@ -6,7 +6,9 @@
 
 <form asp-action="@(Model != null ? "EditMeal" : "NewMeal")">
     <div asp-validation-summary="ModelOnly" class="text-danger"></div>
-    @Html.Hidden("Id", Model.Id)
+    @if (Model != null) {
+        @Html.Hidden("Id", Model.Id)
+    }
     <br>
     <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
         <input asp-for="Name" class="mdl-textfield__input">

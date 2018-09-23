@@ -1,4 +1,5 @@
-﻿using System.Linq;
+﻿using System;
+using System.Linq;
 using StudentMeal.Domain;
 
 namespace StudentMeal.DataAccess {
@@ -17,9 +18,14 @@ namespace StudentMeal.DataAccess {
 
         public void AddMeal(Meal meal) => _context.Meals.Add(meal);
 
-        public void UpdateMeal(Meal meal) {
-            DeleteMeal(_context.Meals.Where(item => item.Id == meal.Id).FirstOrDefault());
-            AddMeal(meal);
+        public void UpdateMeal(Meal newMeal) {
+            var meal = _context.Meals.Find(newMeal.Id);
+            meal.DateTime = newMeal.DateTime;
+            meal.Description = newMeal.Description;
+            meal.Name = newMeal.Name;
+            meal.Price = newMeal.Price;
+            meal.MaxGuests = newMeal.MaxGuests;
+            _context.Update(meal);
         }
 
         public void DeleteMeal(Meal meal) => _context.Meals.Remove(meal);
@@ -35,10 +41,10 @@ namespace StudentMeal.DataAccess {
         }
 
         public void RemoveStudentAsGuestFromMeal(Student student, Meal meal) {
-            var mealStudent = _context.StudentMeals.Where(sm => sm.Student == student && sm.Meal == meal).FirstOrDefault();
-            _context.StudentMeals.Remove(mealStudent);
+            var mealStudent = _context.StudentMeals.FirstOrDefault(sm => sm.Student == student && sm.Meal == meal);
             student.MealsAsGuestList.Remove(mealStudent);
             meal.GuestsList.Remove(mealStudent);
+            _context.StudentMeals.Remove(mealStudent);
         }
 
         public void SaveChanges() {

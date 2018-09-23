@@ -10,8 +10,8 @@ using StudentMeal.DataAccess.Database;
 namespace StudentMeal.Presentation.Migrations
 {
     [DbContext(typeof(UserDbContext))]
-    [Migration("20180922145652_Second Migration")]
-    partial class SecondMigration
+    [Migration("20180923163810_Initial Migration")]
+    partial class InitialMigration
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {

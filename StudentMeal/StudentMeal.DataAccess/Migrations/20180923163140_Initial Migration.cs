@@ -87,6 +87,12 @@ namespace StudentMeal.DataAccess.Migrations
                 name: "IX_StudentMeals_StudentId",
                 table: "StudentMeals",
                 column: "StudentId");
+
+            migrationBuilder.CreateIndex(
+                name: "IX_Students_Email",
+                table: "Students",
+                column: "Email",
+                unique: true);
         }
 
         protected override void Down(MigrationBuilder migrationBuilder)

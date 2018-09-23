@@ -86,6 +86,9 @@ namespace StudentMeal.DataAccess.Migrations
 
                     b.HasKey("Id");
 
+                    b.HasIndex("Email")
+                        .IsUnique();
+
                     b.ToTable("Students");
                 });
 
