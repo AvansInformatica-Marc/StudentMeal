@@ -101,6 +101,10 @@ namespace StudentMeal.DataAccess {
             _meals.Add(meal);
         }
 
+        public void UpdateMeal(Meal meal) { }
+
+        public void DeleteMeal(Meal meal) => _meals.Remove(meal);
+
         public void AddStudentAsGuestToMeal(Student student, Meal meal) {
             var mealStudent = new MealStudent {
                 Student = student,
@@ -108,6 +112,12 @@ namespace StudentMeal.DataAccess {
             };
             student.MealsAsGuestList.Add(mealStudent);
             meal.GuestsList.Add(mealStudent);
+        }
+
+        public void RemoveStudentAsGuestFromMeal(Student student, Meal meal) {
+            var mealStudent = meal.GuestsList.FirstOrDefault(ms => ms.Student == student && ms.Meal == meal);
+            student.MealsAsGuestList.Remove(mealStudent);
+            meal.GuestsList.Remove(mealStudent);
         }
 
         public void SaveChanges() {}

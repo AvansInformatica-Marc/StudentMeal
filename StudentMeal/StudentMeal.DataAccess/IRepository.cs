@@ -11,7 +11,13 @@ namespace StudentMeal.DataAccess {
 
         void AddMeal(Meal meal);
 
+        void UpdateMeal(Meal meal);
+
+        void DeleteMeal(Meal meal);
+
         void AddStudentAsGuestToMeal(Student student, Meal meal);
+
+        void RemoveStudentAsGuestFromMeal(Student student, Meal meal);
 
         void SaveChanges();
     }

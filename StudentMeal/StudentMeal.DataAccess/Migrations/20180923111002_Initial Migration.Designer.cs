@@ -3,15 +3,17 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using StudentMeal.DataAccess;
 
 namespace StudentMeal.DataAccess.Migrations
 {
-    [DbContext(typeof(StudentMealDbRepository))]
-    partial class DatabaseRepositoryModelSnapshot : ModelSnapshot
+    [DbContext(typeof(StudentMealDbContext))]
+    [Migration("20180923111002_Initial Migration")]
+    partial class InitialMigration
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -25,7 +27,7 @@ namespace StudentMeal.DataAccess.Migrations
                         .ValueGeneratedOnAdd()
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
-                    b.Property<int>("CookId");
+                    b.Property<int?>("CookId");
 
                     b.Property<DateTime>("DateTime");
 
@@ -93,8 +95,7 @@ namespace StudentMeal.DataAccess.Migrations
                 {
                     b.HasOne("StudentMeal.Domain.Student", "Cook")
                         .WithMany("MealsAsCook")
-                        .HasForeignKey("CookId")
-                        .OnDelete(DeleteBehavior.Cascade);
+                        .HasForeignKey("CookId");
                 });
 
             modelBuilder.Entity("StudentMeal.Domain.MealStudent", b =>

@@ -67,10 +67,46 @@
     </span>
 </p>
 
+<hr>
+
+@if (Model.CanStudentEnterAsGuest(User.Identity.Name)) {
+    <a asp-controller="Home" asp-action="JoinMeal" asp-route-id="@Model.Id">
+        <button class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--accent">
+            Inschrijven
+        </button>
+    </a>
+} else if (Model.CanStudentLeave(User.Identity.Name)) {
+    <a asp-controller="Home" asp-action="LeaveMeal" asp-route-id="@Model.Id">
+        <button class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--accent">
+            Uitschrijven
+        </button>
+    </a>
+}
+
+@if (Model.CanStudentDelete(User.Identity.Name)) {
+    <a asp-controller="Home" asp-action="DeleteMeal" asp-route-id="@Model.Id">
+        <button class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--accent">
+            <i class="material-icons">delete</i> <span>Verwijder</span>
+        </button>
+    </a>
+}
+
+@if (Model.CanStudentEdit(User.Identity.Name)) {
+    <a asp-controller="Home" asp-action="EditMeal" asp-route-id="@Model.Id">
+        <button class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--accent">
+            <i class="material-icons">edit</i> <span>Wijzig</span>
+        </button>
+    </a>
+}
+
 <style>
     .detail > .material-icons, .detail > span {
         vertical-align: middle;
         padding: 0px 8px;
+    }
+
+    button > .material-icons, button > span {
+        vertical-align: middle;
     }
 
     .detail > span {

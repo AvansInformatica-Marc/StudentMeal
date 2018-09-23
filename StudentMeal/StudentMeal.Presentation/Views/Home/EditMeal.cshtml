@@ -1,11 +1,12 @@
 ﻿@model StudentMeal.Domain.Meal
 
 @{
-    ViewData["Title"] = "Nieuwe maaltijd";
+    ViewData["Title"] = Model != null ? "Wijzig maaltijd" : "Nieuwe maaltijd";
 }
 
-<form asp-action="NewMeal">
+<form asp-action="@(Model != null ? "EditMeal" : "NewMeal")">
     <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+    @Html.Hidden("Id", Model.Id)
     <br>
     <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
         <input asp-for="Name" class="mdl-textfield__input">
@@ -38,6 +39,6 @@
     </div>
     <br><br>
     <div class="form-group">
-        <input type="submit" value="Maaltijd toevoegen" class="mdl-button mdl-js-button mdl-button--raised mdl-button--accent" />
+        <input type="submit" value="Maaltijd @(Model != null ? "wijzigen" : "toevoegen")" class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--accent" />
     </div>
 </form>

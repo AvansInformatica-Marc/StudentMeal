@@ -4,7 +4,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 
 namespace StudentMeal.DataAccess.Migrations
 {
-    public partial class Initialmigration : Migration
+    public partial class InitialMigration : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
@@ -32,7 +32,7 @@ namespace StudentMeal.DataAccess.Migrations
                     DateTime = table.Column<DateTime>(nullable: false),
                     Name = table.Column<string>(maxLength: 64, nullable: false),
                     Description = table.Column<string>(nullable: false),
-                    CookId = table.Column<int>(nullable: false),
+                    CookId = table.Column<int>(nullable: true),
                     MaxGuests = table.Column<byte>(nullable: false),
                     Price = table.Column<float>(nullable: false)
                 },
@@ -44,7 +44,7 @@ namespace StudentMeal.DataAccess.Migrations
                         column: x => x.CookId,
                         principalTable: "Students",
                         principalColumn: "Id",
-                        onDelete: ReferentialAction.Cascade);
+                        onDelete: ReferentialAction.Restrict);
                 });
 
             migrationBuilder.CreateTable(
