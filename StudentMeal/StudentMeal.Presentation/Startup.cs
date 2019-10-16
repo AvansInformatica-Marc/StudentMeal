@@ -23,15 +23,21 @@ namespace StudentMeal {
 
             //services.AddTransient<StudentMealDbContext>();
 
-            services.AddTransient<IRepository, StudentMealDbRepository>();
+            services.AddTransient<IRepository, FakeDataRepository>();
             services.AddTransient<StudentMealManager>();
 
             //services.AddTransient<UserDbContext>();
 
-            services.AddDbContext<StudentMealDbContext>(options => options.UseLazyLoadingProxies().UseSqlServer(Configuration.GetConnectionString("defaultConnection")));
+            //services.AddDbContext<StudentMealDbContext>(options => options.UseLazyLoadingProxies().UseSqlServer(Configuration.GetConnectionString("defaultConnection")));
             services.AddDbContext<UserDbContext>(options => options.UseSqlServer(Configuration.GetConnectionString("defaultAuthConnection")));
 
-            services.AddIdentity<IdentityUser, IdentityRole>().AddEntityFrameworkStores<UserDbContext>().AddDefaultTokenProviders();
+            services.AddIdentity<IdentityUser, IdentityRole>(options => {
+                options.Password.RequireDigit = false;
+                options.Password.RequiredLength = 4;
+                options.Password.RequireNonAlphanumeric = false;
+                options.Password.RequireUppercase = false;
+                options.Password.RequireLowercase = false;
+            }).AddEntityFrameworkStores<UserDbContext>().AddDefaultTokenProviders();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
