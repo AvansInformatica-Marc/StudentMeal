@@ -1,0 +1,75 @@
+﻿.mdl-layout .mdl-layout__header-row .mdl-navigation__link:last-of-type {
+    padding-right: 0;
+}
+
+.mdl-layout__header {
+    display: flex !important;
+}
+
+.mdl-layout {
+    background-color: #EEEEEE;
+}
+
+.page-content {
+    padding: 8px 32px;
+}
+
+.mdl-card {
+    margin: 16px;
+}
+
+hr {
+    border: none;
+    background: rgba(0, 0, 0, 0.05);
+}
+
+.mdl-button--fab_bottomright {
+    position: fixed !important;
+    bottom: 32px !important;
+    right: 32px !important;
+}
+
+.mdl-button--fab {
+    z-index: 50;
+}
+
+.mdl-layout .mdl-layout__header,
+.mdl-layout .mdl-layout__drawer-button {
+    color: white;
+}
+
+.mdl-textfield__error {
+    visibility: visible !important;
+}
+
+.mdl-layout__drawer > .mdl-layout--account-info {
+    position: relative;
+    height: 160px;
+}
+
+.mdl-layout__drawer > .mdl-layout--account-info > div {
+    position: absolute;
+    bottom: 0;
+    padding: 16px;
+}
+
+.mdl-chip__contact-large {
+    width: 48px;
+    height: 48px;
+    border-radius: 48px;
+    line-height: 48px;
+    font-size: 27px;
+}
+
+.mdl-layout__drawer > .mdl-layout--account-info .username {
+    display: block;
+    padding-top: 8px;
+}
+
+.mdl-button {
+    margin: 0 8px !important;
+}
+
+.text-danger {
+    color: #B00020;
+}

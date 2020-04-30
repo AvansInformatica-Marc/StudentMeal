@@ -1,0 +1,46 @@
+﻿@model StudentMeal.Domain.Meal
+
+@{
+    ViewData["Title"] = Model != null ? "Wijzig maaltijd" : "Nieuwe maaltijd";
+}
+
+<form asp-action="@(Model != null ? "EditMeal" : "NewMeal")">
+    <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+    @if (Model != null) {
+        @Html.Hidden("Id", Model.Id)
+    }
+    <br>
+    <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
+        <input asp-for="Name" class="mdl-textfield__input">
+        <label asp-for="Name" class="mdl-textfield__label">Naam</label>
+        <span asp-validation-for="Name" class="mdl-textfield__error"></span>
+    </div>
+    <br><br>
+    <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
+        <textarea asp-for="Description" class="mdl-textfield__input" rows="3"></textarea>
+        <label asp-for="Description" class="mdl-textfield__label">Beschrijving</label>
+        <span asp-validation-for="Description" class="mdl-textfield__error"></span>
+    </div>
+    <br><br>
+    <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label is-upgraded is-dirty" data-upgraded=",MaterialTextfield">
+        <input asp-for="DateTime" class="mdl-textfield__input">
+        <label asp-for="DateTime" class="mdl-textfield__label">Datum en tijd</label>
+        <span asp-validation-for="DateTime" class="mdl-textfield__error"></span>
+    </div>
+    <br><br>
+    <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
+        <input asp-for="MaxGuests" class="mdl-textfield__input">
+        <label asp-for="MaxGuests" class="mdl-textfield__label">Maximaal aantal gasten</label>
+        <span asp-validation-for="MaxGuests" class="mdl-textfield__error"></span>
+    </div>
+    <br><br>
+    <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
+        <input asp-for="Price" class="mdl-textfield__input">
+        <label asp-for="Price" class="mdl-textfield__label">Prijs</label>
+        <span asp-validation-for="Price" class="mdl-textfield__error"></span>
+    </div>
+    <br><br>
+    <div class="form-group">
+        <input type="submit" value="Maaltijd @(Model != null ? "wijzigen" : "toevoegen")" class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--accent" />
+    </div>
+</form>

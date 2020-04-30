@@ -1,0 +1,25 @@
+﻿@model StudentMeal.Presentation.Models.LoginModel
+
+@{
+    ViewData["Title"] = "Inloggen";
+}
+
+<form asp-action="Login">
+    <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+    <br>
+    <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
+        <input asp-for="Email" class="mdl-textfield__input">
+        <label asp-for="Email" class="mdl-textfield__label">Email</label>
+        <span asp-validation-for="Email" class="mdl-textfield__error"></span>
+    </div>
+    <br><br>
+    <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
+        <input asp-for="Password" class="mdl-textfield__input">
+        <label asp-for="Password" class="mdl-textfield__label">Wachtwoord</label>
+        <span asp-validation-for="Password" class="mdl-textfield__error"></span>
+    </div>
+    <br><br>
+    <div class="form-group">
+        <input type="submit" value="Log in" class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--accent" />
+    </div>
+</form>

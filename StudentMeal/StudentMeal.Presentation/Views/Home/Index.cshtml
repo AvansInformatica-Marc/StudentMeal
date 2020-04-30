@@ -1,0 +1,41 @@
+﻿@model StudentMeal.Presentation.Models.IndexViewModel
+
+@{
+    ViewData["Title"] = "Start";
+}
+
+<h4>Vandaag</h4>
+@if (Model.Today.Count() == 0) {
+    <p>Geen maaltijd voor vandaag</p>
+} else {
+    @foreach (var meal in Model.Today) {
+        <partial name="_MealCard" model="meal" />
+    }
+}
+<br>
+
+<h4>Komende weken</h4>
+@if (Model.Upcoming.Count() == 0) {
+    <p>Geen maaltijd de komende weken</p>
+} else {
+    @foreach (var meal in Model.Upcoming) {
+        <partial name="_MealCard" model="meal" />
+    }
+}
+
+@if (this.User.Identity.Name != null) {
+    <div style="height:112px;"></div>
+
+    <a asp-controller="Home" asp-action="NewMeal">
+        <button class="mdl-button mdl-js-button mdl-button--fab mdl-js-ripple-effect mdl-button--colored mdl-button--fab_bottomright">
+            <i class="material-icons">add</i>
+        </button>
+    </a>
+}
+
+<style>
+    .mdl-card {
+        margin: 8px;
+        display: inline-block;
+    }
+</style>
